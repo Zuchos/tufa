@@ -14,12 +14,6 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
 
-app.use(cookieSession({
-  name: 'tempSession',
-  keys: ['secterKey'],
-  maxAge: 60 * 1000 // 24 hours
-}));
-
 app.use(bodyParser.urlencoded({
   extended: true
 }));
