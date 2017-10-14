@@ -1,0 +1,55 @@
+{
+  "contract_name": "Tufa",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "verifier",
+          "type": "address"
+        },
+        {
+          "name": "proover",
+          "type": "address"
+        }
+      ],
+      "name": "getAuthenticationToken",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "verifier",
+          "type": "address"
+        },
+        {
+          "name": "authenticationToken",
+          "type": "uint256"
+        }
+      ],
+      "name": "authenticate",
+      "outputs": [],
+      "payable": false,
+      "type": "function"
+    }
+  ],
+  "unlinked_binary": "0x6060604052341561000c57fe5b5b61010c8061001c6000396000f300606060405263ffffffff60e060020a6000350416635208308b8114602a57806395cdca1214605b575bfe5b3415603157fe5b6049600160a060020a03600435811690602435166079565b60408051918252519081900360200190f35b3415606257fe5b6077600160a060020a036004351660243560a4565b005b600160a060020a03808216600090815260208181526040808320938616835292905220545b92915050565b600080821160b25760006000fd5b5033600160a060020a038181166000908152602081815260408083209387168352929052208290555b5050505600a165627a7a72305820cde5f5d8a3e6090f887f52530c5f69bb83c67975e2a04bd4f8f9474b5a36600d0029",
+  "networks": {
+    "1507980548419": {
+      "events": {},
+      "links": {},
+      "address": "0xb1e711db029fdf20ba0b677ef053776d4a97f9b2",
+      "updated_at": 1507980552078
+    }
+  },
+  "schema_version": "0.0.5",
+  "updated_at": 1507980552078
+}

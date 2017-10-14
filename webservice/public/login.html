@@ -1,0 +1,15 @@
+<h3>Login</h3>
+<form name="registrationForm" class="form-horizontal" novalidate>
+  <div class="panel panel-default">
+    <div class="form-group">
+      <label>E-mail</label>
+      <input ng-class="error.length ? 'is-invalid' : ''" class="form-control" type="text" name="email" ng-model="loginData.email" ng-change="error = null">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input ng-class="error.length ? 'is-invalid' : ''" class="form-control" type="password is-invalid" name="password" ng-model="loginData.password"  ng-change="error = null">
+      <div class="invalid-feedback" nf-if="error">{{error}}</div>  
+    </div>
+    <button class="btn btn-primary" type="submit" ng-click="login()">Login</button>
+  </div>
+</form>

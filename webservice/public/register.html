@@ -1,0 +1,18 @@
+<h3>Register</h3>
+<form name="registrationForm" class="form-horizontal">
+  <div class="panel panel-default">
+    <div class="form-group">
+      <label>E-mail</label>
+      <input class="form-control" type="text" name="email" ng-model="registration.email">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input class="form-control" type="password" name="password" ng-model="registration.password">
+    </div>
+    <div class="form-group">
+      <label>ETH account address</label>
+      <input class="form-control" type="text" name="address" ng-model="registration.address">
+    </div>
+    <button class="btn btn-primary" type="submit" ng-click="register()">Register</button>
+  </div>
+</form>
