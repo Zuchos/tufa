@@ -38,8 +38,8 @@
       }
     };
 
-    this.authenticate = (verifier, token) => $q((resolve, reject) => {
-      tufaContract.authenticate(verifier, token, {
+    this.authenticate = (token) => $q((resolve, reject) => {
+      tufaContract.authenticate(token, {
         from: account,
         value: 0
       }, callback(resolve, reject));
@@ -103,7 +103,6 @@
     $scope.login = () => {
       $scope.error = null;
       return AuthService.login($scope.loginData).then(() => $location.path('/2fa')).catch(response => {
-        console.log(response)
         $scope.error = response.data.error;
       });
     };
@@ -116,11 +115,10 @@
     $scope.loggedUser = AuthService.getLoggedUser();
     $scope.status = 'NotAuthenticated';
     $scope.authenticate = () => {
-      Tufa.authenticate($scope.loggedUser.verifier, $scope.loggedUser.token).then(_ => {
+      Tufa.authenticate($scope.loggedUser.token).then(_ => {
         $scope.status = 'InProgress';
         const stop = $interval(() => {
-          console.log("Run!");
-          $scope.verify().then(() => $interval.cancel(stop))
+          $scope.verify().then(() => $interval.cancel(stop));
         }, 500);
       });
     };

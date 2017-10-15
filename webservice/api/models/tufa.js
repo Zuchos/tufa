@@ -9,13 +9,13 @@ module.exports = function (web3) {
     console.log(tufa.account);
   });
 
-  tufa.getAuthenticationToken = proover => new Promise((resolve, reject) => {
-    if (!tufa.account || !proover) {
+  tufa.getAuthenticationToken = prover => new Promise((resolve, reject) => {
+    if (!tufa.account || !prover) {
       reject("Problem with accounts...");
     } else {
       try {
-        console.log(proover);
-        tufaContract.getAuthenticationToken.call(tufa.account, proover, (error, result) => {
+        console.log(prover);
+        tufaContract.getAuthenticationToken.call(prover, (error, result) => {
           if (error) {
             reject(error);
           } else {

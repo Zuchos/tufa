@@ -4,7 +4,6 @@ module.exports = (web3) => {
   var tufa = require('../models/tufa')(web3);
   const users = [];
   const register = (req, res) => {
-    console.log('Register');
     console.log(req.body);
     const user = req.body;
     user.token = 0;
@@ -15,11 +14,10 @@ module.exports = (web3) => {
   };
 
   class SessionUser {
-    constructor(user, verifier){
+    constructor(user){
       this.email = user.email;
       this.address = user.address;
       this.token = user.token;
-      this.verifier = verifier;
       this.tokenVerification = false;
     }
   }
@@ -41,18 +39,15 @@ module.exports = (web3) => {
 
 
   const login = (req, res) => {
-    console.log('Login');
     console.log(req.body);
     const loginData = req.body;
     const user = users.find(u => u.email == loginData.email);
     if (req.session.user) {
-      console.log('Existing session...');
       res.json({
         status: 'OK',
         user: req.session.user
       });
     } else if (user && user.password === loginData.password) {
-      console.log('New session');
       user.token = nextToken(user.token);
       req.session.user = new SessionUser(user, tufa.account);
       res.json({
@@ -80,15 +75,12 @@ module.exports = (web3) => {
     if (!req.session.user) {
       res.status(401).send({ error: 'Login with password first' })
     } else {
-      console.log('Verify...');
-      console.log(req.session.user);
       if (req.session.user && req.session.user.tokenVerification) {
         res.json({
           status: 'OK'
         });
       } else {
         const user = req.session.user;
-        console.log(tufa);
         tufa.getAuthenticationToken(user.address).then(token => {      
           if (token.toString() === user.token.toString()) {
             req.session.user.tokenVerification = true;
