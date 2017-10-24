@@ -1,1 +1,2 @@
-webservice/node_modules
+node_modules/*
+webapp/node_modules
